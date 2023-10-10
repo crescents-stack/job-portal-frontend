@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.section {
+  @apply py-10;
+}
+.container {
+  @apply max-w-[1000px] px-[10px];
+}
+h1 {
+  @apply text-2xl lg:text-4xl font-bold;
+}
+h2 {
+  @apply text-xl lg:text-3xl font-bold;
+}
+
