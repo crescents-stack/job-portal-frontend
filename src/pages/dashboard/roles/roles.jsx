@@ -8,22 +8,28 @@ import { BACKEND_URL } from "../../../utils/urls";
 import { Delete, Edit } from "@mui/icons-material";
 import Loader from "../../../components/unique/loader";
 import { notify } from "../../../App";
+import FlagBangladesh from "../../../assets/flags/bangladesh";
+import FlagIndia from "../../../assets/flags/india";
 
 const Roles = () => {
   const [rolelist, setRoleList] = useState([]);
   const [loader, setLoader] = useState(true);
 
   const FetchRoleList = async () => {
-    const response = await axios.get(`${BACKEND_URL}/api/roles`);
-    console.log(response);
-    if (response.status === 200) {
-      setRoleList(response.data.roles);
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/roles`);
+      console.log(response);
+      if (response.status === 200) {
+        setRoleList(response.data.roles);
+      }
+      setLoader(false);
+    } catch (error) {
+      setLoader(false);
     }
   };
 
   useEffect(() => {
     FetchRoleList();
-    setLoader(false);
   }, []);
 
   const handleDelete = async (_id) => {
@@ -42,7 +48,7 @@ const Roles = () => {
   return (
     <div>
       <div className="flex justify-between">
-        <h3 className="text-[16px] md:text-[20px] font-bold">Roles</h3>
+        <h3 className="text-[16px] md:text-[20px] font-bold">Open Vacancies</h3>
         <Link to={"/dashboard/roles/create"}>
           <Button variant="contained" color="primary">
             Create Role
@@ -57,31 +63,30 @@ const Roles = () => {
               className="flex items-center justify-between w-full py-2"
               style={{ borderBottom: "1px solid lightgray" }}
             >
-              <p className="font-bold">{role.role}</p>
-              <ul className="hidden sm:flex gap-4 items-center">
-                {role.locations.map((location, index) => {
-                  return (
-                    <li
-                      key={index}
-                      style={{
-                        padding: "2px 8px",
-                        borderRadius: "4px",
-                        background: "#f2f2f2",
-                        display: "inline-block",
-                      }}
-                    >
-                      {location === "BN" ? "Bangladesh" : "India"}
-                    </li>
-                  );
-                })}
-              </ul>
-              <div>
+              <div className="flex items-center gap-4">
+                <p className="font-bold">{role.role}</p>
+                <ul className="hidden sm:flex gap-4 items-center">
+                  {role.locations.map((location, index) => {
+                    return (
+                      <li
+                        key={index}
+                        style={{
+                          display: "inline-block",
+                        }}
+                      >
+                        {location === "BN" ? <FlagBangladesh /> : <FlagIndia />}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className="space-x-8">
                 <Link to={`/dashboard/roles/update?_id=${role._id}`}>
                   <Edit />
                 </Link>
                 <Delete
                   onClick={() => handleDelete(role._id)}
-                  className="cursor-pointer"
+                  className="cursor-pointer fill-red-500"
                 />
               </div>
             </div>

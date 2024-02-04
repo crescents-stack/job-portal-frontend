@@ -30,7 +30,7 @@ const Login = () => {
         setCookie("token", response.data.token);
         setUser(response.data.token);
         notify("Login Successful!", "success");
-        navigate("/dashboard");
+        navigate("/dashboard/jobs");
         setSpinner(false);
       }
     } catch (error) {
@@ -85,6 +85,7 @@ const Login = () => {
             Password
           </label>
           <Input name="password" type="password" onChange={handleOnChange} />
+          <ErrorBar props={{ text: errors?.password }} />
         </div>
         <Button
           variant="contained"

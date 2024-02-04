@@ -82,7 +82,7 @@ const Register = () => {
             Name
           </label>
           <Input name="name" type="text" onChange={handleOnChange} />
-          <ErrorBar props={{ text: errors?.email }} />
+          <ErrorBar props={{ text: errors?.name }} />
         </div>
         <div className="grid grid-cols-1">
           <label htmlFor="email" className="font-semibold">
@@ -96,6 +96,7 @@ const Register = () => {
             Password
           </label>
           <Input name="password" type="password" onChange={handleOnChange} />
+          <ErrorBar props={{ text: errors?.password }} />
         </div>
 
         <Button

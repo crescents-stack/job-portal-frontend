@@ -47,32 +47,37 @@ const Jobs = () => {
   return (
     <div>
       <div className="flex justify-between">
-        <h3 className="text-[16px] md:text-[20px] font-bold">Jobs</h3>
+        <h3 className="text-[16px] md:text-[20px] font-bold">All Jobs Categories</h3>
         <Link to={"/dashboard/jobs/create"}>
           <Button variant="contained" color="primary">
-            Create Job Category
+            Create Job
           </Button>
         </Link>
       </div>
-      <div className="pt-10">
+      <div className="pt-10 space-y-8">
         {joblist.map((job, index) => {
           return (
             <div
               key={index}
-              className="flex items-start justify-between w-full py-2"
-              style={{ borderBottom: "1px solid lightgray" }}
+              className="flex items-start justify-between w-full pt-2 pb-4 px-4 rounded-[10px]"
+              style={{
+                borderTop: "1px solid lightgray",
+                boxShadow: "0px 2px 4px rgba(0,0,0,0.1)",
+              }}
             >
-              <p className="font-bold">{job.category}</p>
-              <ul className="hidden sm:flex flex-col">
-                {job.roles.map((role) => {
-                  return (
-                    <li key={role._id}>
-                      {role.role}({role.locations.toString()})
-                    </li>
-                  );
-                })}
-              </ul>
-              <div>
+              <div className="space-y-2">
+                <p className="font-bold">{job.category}</p>
+                <ul className="hidden sm:flex flex-col">
+                  {job.roles.map((role) => {
+                    return (
+                      <li key={role._id} style={{ color: "#3f3f3f" }}>
+                        {role.role}&nbsp;({role.locations.toString()})
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className="space-x-8">
                 <Link to={`/dashboard/jobs/update?_id=${job._id}`}>
                   <Edit />
                 </Link>
