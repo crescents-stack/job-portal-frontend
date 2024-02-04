@@ -1,6 +1,6 @@
 const ErrorPage = () => {
     return (
-        <div>404 | Page not found!</div>
+        <div className="container mx-auto py-32">404 | Page not found!</div>
     )
 }
 
