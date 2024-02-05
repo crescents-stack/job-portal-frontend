@@ -107,12 +107,19 @@ const CreateJob = () => {
                   defaultValues={form.getValues("locations")}
                   options={options}
                 />
-                <Button type="submit" variant={"contained"}>
-                  Submit
+                <Button
+                  type="submit"
+                  variant={"contained"}
+                  disabled={form.formState.isSubmitting}
+                >
+                  {form.formState.isSubmitting ? "Creating..." : "Create job"}
                 </Button>
               </>
             ) : (
-              <Link to="/dashboard/roles/create" className="hover:underline flex items-center gap-2">
+              <Link
+                to="/dashboard/roles/create"
+                className="hover:underline flex items-center gap-2"
+              >
                 <ArrowRight /> Please add a role first!
               </Link>
             )}

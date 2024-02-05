@@ -58,8 +58,12 @@ const CreateRole = () => {
             defaultValues={form.getValues("locations")}
             options={options}
           />
-          <Button type="submit" variant={"contained"}>
-            Submit
+          <Button
+            type="submit"
+            variant={"contained"}
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting ? "Creating..." : "Create role"}
           </Button>
         </Stack>
       </form>

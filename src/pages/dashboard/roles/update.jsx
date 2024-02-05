@@ -55,7 +55,6 @@ const UpdateRole = () => {
         // form.formState.defaultValues = response.data.role;
         form.reset(response.data.role);
         setLoader(false);
-        
       }
     } catch (error) {
       console.log(error);
@@ -92,8 +91,12 @@ const UpdateRole = () => {
               defaultValues={form.getValues("locations")}
               options={options}
             />
-            <Button type="submit" variant={"contained"}>
-              Submit
+            <Button
+              type="submit"
+              variant={"contained"}
+              disabled={form.formState.isSubmitting}
+            >
+              {form.formState.isSubmitting ? "Updating..." : "Update Role"}
             </Button>
           </Stack>
         </form>

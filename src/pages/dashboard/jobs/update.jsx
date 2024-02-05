@@ -134,8 +134,12 @@ const UpdateJob = () => {
               defaultValues={form.getValues("roles")}
               options={options}
             />
-            <Button type="submit" variant={"contained"}>
-              Submit
+            <Button
+              type="submit"
+              variant={"contained"}
+              disabled={form.formState.isSubmitting}
+            >
+              {form.formState.isSubmitting ? "Updating..." : "Update job"}
             </Button>
           </Stack>
         </form>
