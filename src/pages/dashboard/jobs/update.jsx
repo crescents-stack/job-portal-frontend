@@ -30,7 +30,10 @@ const UpdateJob = () => {
   // eslint-disable-next-line no-unused-vars
   const UpdateRole = async (data) => {
     try {
-      const response = await axios.patch(`${BACKEND_URL}/api/jobs/${data._id}`, data);
+      const response = await axios.patch(
+        `${BACKEND_URL}/api/jobs/${data._id}`,
+        data
+      );
       console.log(response);
       if (response.status === 200) {
         notify("Job created successfully!", "success");
@@ -57,7 +60,9 @@ const UpdateJob = () => {
 
   const FetchRoleList = async () => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/api/roles`);
+      const response = await axios.get(
+        `${BACKEND_URL}/api/roles/available/${searchParams.get("_id")}`
+      );
       console.log(response);
       if (response.status === 200) {
         setRoleList(response.data.roles);
@@ -80,11 +85,16 @@ const UpdateJob = () => {
 
   const FetchJobData = async () => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/api/jobs/${searchParams.get("_id")}`);
+      const response = await axios.get(
+        `${BACKEND_URL}/api/jobs/${searchParams.get("_id")}`
+      );
       console.log(response);
       if (response.status === 200) {
         const data = response.data.jobs[0];
-        const processedData = {...data, roles: [...data.roles.map((role) => role._id)]}
+        const processedData = {
+          ...data,
+          roles: [...data.roles.map((role) => role._id)],
+        };
         form.reset(processedData);
         setLoader(false);
       }

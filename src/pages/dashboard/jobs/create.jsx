@@ -8,6 +8,8 @@ import { notify } from "../../../App";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loader from "../../../components/unique/loader";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "@mui/icons-material";
 
 const CreateJob = () => {
   const navigate = useNavigate();
@@ -54,7 +56,7 @@ const CreateJob = () => {
 
   const FetchRoleList = async () => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/api/roles`);
+      const response = await axios.get(`${BACKEND_URL}/api/roles/unpublished`);
       console.log(response);
       if (response.status === 200) {
         setRoleList(response.data.roles);
@@ -86,26 +88,34 @@ const CreateJob = () => {
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <Stack spacing={2} width={400}>
             <Typography variant="h6">Add new job category</Typography>
-            <TextField
-              {...register("category", {
-                required: "Category is required!",
-              })}
-              label="Job category"
-              error={!!errors.email}
-              helperText={errors.email?.message}
-              size="small"
-            />
-            <FormInputMultiCheckbox
-              control={control}
-              setValue={setValue}
-              name={"roles"}
-              label={"Roles"}
-              defaultValues={form.getValues("locations")}
-              options={options}
-            />
-            <Button type="submit" variant={"contained"}>
-              Submit
-            </Button>
+            {options.length ? (
+              <>
+                <TextField
+                  {...register("category", {
+                    required: "Category is required!",
+                  })}
+                  label="Job category"
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
+                  size="small"
+                />
+                <FormInputMultiCheckbox
+                  control={control}
+                  setValue={setValue}
+                  name={"roles"}
+                  label={"Roles"}
+                  defaultValues={form.getValues("locations")}
+                  options={options}
+                />
+                <Button type="submit" variant={"contained"}>
+                  Submit
+                </Button>
+              </>
+            ) : (
+              <Link to="/dashboard/roles/create" className="hover:underline flex items-center gap-2">
+                <ArrowRight /> Please add a role first!
+              </Link>
+            )}
           </Stack>
         </form>
       )}
