@@ -8,6 +8,7 @@ import { BACKEND_URL } from "../../../utils/urls";
 import { Delete, Edit } from "@mui/icons-material";
 import Loader from "../../../components/unique/loader";
 import { notify } from "../../../App";
+import toast from "react-hot-toast";
 
 const Jobs = () => {
   const [joblist, setJobList] = useState([]);
@@ -47,9 +48,11 @@ const Jobs = () => {
   return (
     <div>
       <div className="flex justify-between">
-        <h3 className="text-[16px] md:text-[20px] font-bold">All Jobs Categories</h3>
+        <h3 className="text-[16px] md:text-[20px] font-bold">
+          All Jobs Categories
+        </h3>
         <Link to={"/dashboard/jobs/create"}>
-          <Button variant="contained" style={{background: "indigo"}}>
+          <Button variant="contained" style={{ background: "indigo" }}>
             Create Job
           </Button>
         </Link>
@@ -82,7 +85,32 @@ const Jobs = () => {
                   <Edit />
                 </Link>
                 <Delete
-                  onClick={() => handleDelete(job._id)}
+                  onClick={() => {
+                    toast((t) => (
+                      <div className="grid grid-cols-1 gap-4">
+                        <p>Are you sure to delete this job?</p>
+                        <div className="space-x-4">
+                          <button
+                            onClick={async () => {
+                              await handleDelete(job._id);
+                              toast.dismiss(t.id);
+                            }}
+                            className="shadow px-[12px] py-[6px] rounded-[10px]"
+                            style={{ background: "red", color: "white" }}
+                          >
+                            Delete
+                          </button>
+                          <button
+                            onClick={() => toast.dismiss(t.id)}
+                            className="shadow px-[12px] py-[6px] rounded-[10px]"
+                            style={{ background: "indigo", color: "white" }}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    ));
+                  }}
                   className="cursor-pointer"
                 />
               </div>

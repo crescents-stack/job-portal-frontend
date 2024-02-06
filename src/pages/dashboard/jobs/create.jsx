@@ -88,6 +88,16 @@ const CreateJob = () => {
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <Stack spacing={2} width={400}>
             <Typography variant="h6">Add new job category</Typography>
+            <Typography variant="p" style={{ color: "gray" }}>
+              In order to create new category there must be available roles. No
+              roles are avaiable here while its on job board. Hence, we need to
+              create role first and then category. Finally, we need to assign
+              that to our category here in this form.
+            </Typography>
+            <Typography variant="p" style={{ color: "gray" }}>
+              We can manage our roles from&nbsp;
+              <Link to="/dashboard/roles" style={{ color: "red" }}>here</Link>
+            </Typography>
             {options.length ? (
               <>
                 <TextField
@@ -103,7 +113,7 @@ const CreateJob = () => {
                   control={control}
                   setValue={setValue}
                   name={"roles"}
-                  label={"Roles"}
+                  label={"Available roles"}
                   defaultValues={form.getValues("locations")}
                   options={options}
                 />
@@ -111,9 +121,11 @@ const CreateJob = () => {
                   type="submit"
                   variant={"contained"}
                   disabled={form.formState.isSubmitting}
-                  style={{background: "indigo"}}
+                  style={{ background: "indigo" }}
                 >
-                  {form.formState.isSubmitting ? "Creating..." : "Create job"}
+                  {form.formState.isSubmitting
+                    ? "Creating..."
+                    : "Create job category"}
                 </Button>
               </>
             ) : (

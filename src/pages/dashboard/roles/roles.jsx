@@ -10,6 +10,7 @@ import Loader from "../../../components/unique/loader";
 import { notify } from "../../../App";
 import FlagBangladesh from "../../../assets/flags/bangladesh";
 import FlagIndia from "../../../assets/flags/india";
+import toast from "react-hot-toast";
 
 const Roles = () => {
   const [rolelist, setRoleList] = useState([]);
@@ -50,7 +51,7 @@ const Roles = () => {
       <div className="flex justify-between">
         <h3 className="text-[16px] md:text-[20px] font-bold">Open Vacancies</h3>
         <Link to={"/dashboard/roles/create"}>
-          <Button variant="contained" style={{background: "indigo"}}>
+          <Button variant="contained" style={{ background: "indigo" }}>
             Create Role
           </Button>
         </Link>
@@ -85,7 +86,32 @@ const Roles = () => {
                   <Edit />
                 </Link>
                 <Delete
-                  onClick={() => handleDelete(role._id)}
+                  onClick={() => {
+                    toast((t) => (
+                      <div className="grid grid-cols-1 gap-4">
+                        <p>Are you sure to delete this role?</p>
+                        <div className="space-x-4">
+                          <button
+                            onClick={async () => {
+                              await handleDelete(role._id);
+                              toast.dismiss(t.id);
+                            }}
+                            className="shadow px-[12px] py-[6px] rounded-[10px]"
+                            style={{ background: "red", color: "white" }}
+                          >
+                            Delete
+                          </button>
+                          <button
+                            onClick={() => toast.dismiss(t.id)}
+                            className="shadow px-[12px] py-[6px] rounded-[10px]"
+                            style={{ background: "indigo", color: "white" }}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    ));
+                  }}
                   className="cursor-pointer fill-red-500"
                 />
               </div>
