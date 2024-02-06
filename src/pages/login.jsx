@@ -10,7 +10,6 @@ import { useContext } from "react";
 import { UserContext, notify } from "../App";
 import { RefreshRounded } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,7 +30,7 @@ const Login = () => {
         setCookie("token", response.data.token);
         setUser(response.data.token);
         notify("Login Successful!", "success");
-        navigate("/dashboard/jobs");
+        navigate("/");
         setSpinner(false);
       }
     } catch (error) {
@@ -73,12 +72,6 @@ const Login = () => {
   };
   return (
     <div className="bg-[url('/grid.svg')] bg-cover bg-center transition ease-in-out duration-500">
-      <div className="container mx-auto pt-10">
-        <Link to="/" className="flex items-center gap-1 group">
-          <ChevronLeft className="translate-x-0 group-hover:translate-x-[-10px] w-4 h-4 mt-[2px]" />
-          Home
-        </Link>
-      </div>
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 gap-16 min-h-[80dvh]">
         <div className="flex items-center gap-4 sm:gap-12 justify-center">
           <img

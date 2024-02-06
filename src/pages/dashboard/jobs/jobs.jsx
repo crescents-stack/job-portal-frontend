@@ -74,7 +74,8 @@ const Jobs = () => {
                   {job.roles.map((role) => {
                     return (
                       <li key={role._id} style={{ color: "#3f3f3f" }}>
-                        {role.role}&nbsp;({role.locations.toString()})
+                        {role.role}&nbsp;(
+                        {role.locations.toString().replaceAll("BN", "BD")})
                       </li>
                     );
                   })}

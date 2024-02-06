@@ -9,7 +9,6 @@ import { setCookie } from "../utils/cookies";
 import { RefreshRounded } from "@mui/icons-material";
 import { notify } from "../App";
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
 
 const Register = () => {
   let navigate = useNavigate();
@@ -77,12 +76,6 @@ const Register = () => {
   };
   return (
     <div className="bg-[url('/grid.svg')] bg-cover bg-center">
-      <div className="container mx-auto pt-10">
-        <Link to="/" className="flex items-center gap-1 group">
-          <ChevronLeft className="translate-x-0 group-hover:translate-x-[-10px] w-4 h-4 mt-[2px]" />
-          Home
-        </Link>
-      </div>
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 gap-16 min-h-[80dvh]">
         <div className="flex items-center gap-4 sm:gap-12 justify-center">
           <img

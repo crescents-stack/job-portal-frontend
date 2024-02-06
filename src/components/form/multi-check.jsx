@@ -60,7 +60,7 @@ const FormInputMultiCheckbox = ({
                   control={control}
                 />
               }
-              label={option.label}
+              label={option.label.replaceAll("BN", "BD")}
               key={option.value}
             />
           );

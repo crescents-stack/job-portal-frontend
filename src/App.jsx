@@ -50,8 +50,10 @@ const App = () => {
       <Navbar />
       <div className="min-h-[100vh]">
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="*" element={<ErrorPage />} />
+          <Route path="/" element={<PrivateRoutes />}>
+            <Route index element={<Home />} />
+          </Route>
           <Route path="/" element={<PublicRoutes />}>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />

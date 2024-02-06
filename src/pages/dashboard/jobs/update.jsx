@@ -74,12 +74,11 @@ const UpdateJob = () => {
             };
           })
         );
-        // setLoader(false);
+        await FetchJobData();
       }
     } catch (error) {
       console.log(error);
       notify(error.response.data.message || "Something went wrong!", "error");
-      // setLoader(false);
     }
   };
 
@@ -107,7 +106,6 @@ const UpdateJob = () => {
 
   useEffect(() => {
     FetchRoleList();
-    FetchJobData();
   }, []);
   return (
     <>
@@ -138,7 +136,7 @@ const UpdateJob = () => {
               type="submit"
               variant={"contained"}
               disabled={form.formState.isSubmitting}
-              style={{background: "indigo"}}
+              style={{ background: "indigo" }}
             >
               {form.formState.isSubmitting ? "Updating..." : "Update job"}
             </Button>
