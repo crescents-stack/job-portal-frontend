@@ -62,6 +62,7 @@ const CreateRole = () => {
             type="submit"
             variant={"contained"}
             disabled={form.formState.isSubmitting}
+            style={{background: "indigo"}}
           >
             {form.formState.isSubmitting ? "Creating..." : "Create role"}
           </Button>

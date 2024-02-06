@@ -9,6 +9,7 @@ import { setCookie } from "../utils/cookies";
 import { RefreshRounded } from "@mui/icons-material";
 import { notify } from "../App";
 import { useNavigate } from "react-router-dom";
+import { ChevronLeft } from "lucide-react";
 
 const Register = () => {
   let navigate = useNavigate();
@@ -75,42 +76,78 @@ const Register = () => {
     return err;
   };
   return (
-    <div className="container mx-auto">
-      <form className="max-w-[300px] mx-auto py-20 grid grid-cols-1 gap-3">
-        <div className="grid grid-cols-1">
-          <label htmlFor="name" className="font-semibold">
-            Name
-          </label>
-          <Input name="name" type="text" onChange={handleOnChange} />
-          <ErrorBar props={{ text: errors?.name }} />
+    <div className="bg-[url('/grid.svg')] bg-cover bg-center">
+      <div className="container mx-auto pt-10">
+        <Link to="/" className="flex items-center gap-1 group">
+          <ChevronLeft className="translate-x-0 group-hover:translate-x-[-10px] w-4 h-4 mt-[2px]" />
+          Home
+        </Link>
+      </div>
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 gap-16 min-h-[80dvh]">
+        <div className="flex items-center gap-4 sm:gap-12 justify-center">
+          <img
+            src={"/rects.svg"}
+            alt="circulars"
+            className="max-w-[75px] sm:max-w-[150px] h-auto"
+          />
+          <div className="space-y-4 sm:space-y-8">
+            <h2
+              className="text-2xl md:text-5xl font-bold "
+              style={{ color: "indigo" }}
+            >
+              Register
+            </h2>
+            <p className="text-lg md:text-xl">
+              Already have account? Please&nbsp;
+              <Link
+                to="/login"
+                className="hover:underline"
+                style={{ color: "indigo" }}
+              >
+                Login
+              </Link>
+            </p>
+          </div>
         </div>
-        <div className="grid grid-cols-1">
-          <label htmlFor="email" className="font-semibold">
-            Email
-          </label>
-          <Input name="email" type="email" onChange={handleOnChange} />
-          <ErrorBar props={{ text: errors?.email }} />
-        </div>
-        <div className="grid grid-cols-1">
-          <label htmlFor="password" className="font-semibold">
-            Password
-          </label>
-          <Input name="password" type="password" onChange={handleOnChange} />
-          <ErrorBar props={{ text: errors?.password }} />
-        </div>
-
-        <Button
-          variant="contained"
-          onClick={handleOnSubmit}
-          className="w-full mt-10"
+        <form
+          className="p-4 md:p-12 grid grid-cols-1 gap-3 my-auto backdrop-blur rounded-[10px] shadow-xl"
+          style={{ border: "1px solid #f3f3f3" }}
         >
-          {spinner ? <RefreshRounded className="animate-spin" /> : null}
-          Register
-        </Button>
-      </form>
-      <Link to="/login" className="text-center hover:text-primary w-full block">
-        Already have account? Login now!
-      </Link>
+          <div className="grid grid-cols-1">
+            <label htmlFor="name" className="font-semibold">
+              Name
+            </label>
+            <Input name="name" type="text" onChange={handleOnChange} />
+            <ErrorBar props={{ text: errors?.name }} />
+          </div>
+          <div className="grid grid-cols-1">
+            <label htmlFor="email" className="font-semibold">
+              Email
+            </label>
+            <Input name="email" type="email" onChange={handleOnChange} />
+            <ErrorBar props={{ text: errors?.email }} />
+          </div>
+          <div className="grid grid-cols-1">
+            <label htmlFor="password" className="font-semibold">
+              Password
+            </label>
+            <Input name="password" type="password" onChange={handleOnChange} />
+            <ErrorBar props={{ text: errors?.password }} />
+          </div>
+          <Button
+            variant="contained"
+            onClick={handleOnSubmit}
+            style={{
+              background: "indigo",
+              color: "white",
+              marginTop: "2rem",
+            }}
+          >
+            {spinner ? <RefreshRounded className="animate-spin" /> : null}
+            Register
+          </Button>
+        </form>
+      </div>
     </div>
   );
 };

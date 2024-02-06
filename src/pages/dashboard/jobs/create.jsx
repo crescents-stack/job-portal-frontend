@@ -111,6 +111,7 @@ const CreateJob = () => {
                   type="submit"
                   variant={"contained"}
                   disabled={form.formState.isSubmitting}
+                  style={{background: "indigo"}}
                 >
                   {form.formState.isSubmitting ? "Creating..." : "Create job"}
                 </Button>

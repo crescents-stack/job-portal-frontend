@@ -95,6 +95,7 @@ const UpdateRole = () => {
               type="submit"
               variant={"contained"}
               disabled={form.formState.isSubmitting}
+              style={{background: "indigo"}}
             >
               {form.formState.isSubmitting ? "Updating..." : "Update Role"}
             </Button>

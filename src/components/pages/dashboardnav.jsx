@@ -32,14 +32,14 @@ const DashboardNav = () => {
             <Link
               to={link}
               style={{
-                background: location.pathname === link ? "#f2f2f2" : "white",
+                background: location.pathname === link ? "#4B008210" : "white",
                 display: "flex",
                 padding: "4px 8px",
                 borderRadius: "4px",
                 borderLeft:
                   location.pathname === link
-                    ? "4px solid #1976D2"
-                    : "4px solid #f2f2f2",
+                    ? "4px solid #4B0082"
+                    : "4px solid #4B008210",
                 boxShadow:
                   location.pathname === link
                     ? "0 0 2px rgba(0, 0, 0, 0.2)"

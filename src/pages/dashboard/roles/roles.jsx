@@ -50,7 +50,7 @@ const Roles = () => {
       <div className="flex justify-between">
         <h3 className="text-[16px] md:text-[20px] font-bold">Open Vacancies</h3>
         <Link to={"/dashboard/roles/create"}>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" style={{background: "indigo"}}>
             Create Role
           </Button>
         </Link>
@@ -64,7 +64,7 @@ const Roles = () => {
               style={{ borderBottom: "1px solid lightgray" }}
             >
               <div className="flex items-center gap-4">
-                <p className="font-bold">{role.role}</p>
+                <p className="font-medium">{role.role}</p>
                 <ul className="hidden sm:flex gap-4 items-center">
                   {role.locations.map((location, index) => {
                     return (

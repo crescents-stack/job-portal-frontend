@@ -7,6 +7,7 @@ import {
   FormLabel,
 } from "@mui/material";
 import { Controller } from "react-hook-form";
+import { indigo } from '@mui/material/colors';
 
 const FormInputMultiCheckbox = ({ name, control, setValue, label, defaultValues, options }) => {
   const [selectedItems, setSelectedItems] = useState(defaultValues ?? []);
@@ -39,7 +40,12 @@ const FormInputMultiCheckbox = ({ name, control, setValue, label, defaultValues,
                     return (
                       <Checkbox
                         checked={selectedItems.includes(option.value)}
-                        onChange={() => handleSelect(option.value)}
+                        sx={{
+                          color: indigo[800],
+                          '&.Mui-checked': {
+                            color: indigo[600],
+                          },
+                        }}
                       />
                     );
                   }}

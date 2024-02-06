@@ -49,7 +49,7 @@ const Jobs = () => {
       <div className="flex justify-between">
         <h3 className="text-[16px] md:text-[20px] font-bold">All Jobs Categories</h3>
         <Link to={"/dashboard/jobs/create"}>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" style={{background: "indigo"}}>
             Create Job
           </Button>
         </Link>
@@ -66,7 +66,7 @@ const Jobs = () => {
               }}
             >
               <div className="space-y-2">
-                <p className="font-bold">{job.category}</p>
+                <p className="font-medium">{job.category}</p>
                 <ul className="hidden sm:flex flex-col">
                   {job.roles.map((role) => {
                     return (

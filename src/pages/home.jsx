@@ -60,9 +60,9 @@ const Home = () => {
   return (
     <div className="container mx-auto">
       <section className="section text-center flex flex-col gap-3">
-        <div>
+        <div className="pb-10 pt-5">
           <h2>BROWSE OPEN POSITIONS</h2>
-          <p>We are always on the lookout for talented people</p>
+          <p style={{color: "gray"}}>We are always on the lookout for talented people</p>
         </div>
         <ButtonGroup
           style={{
@@ -77,9 +77,10 @@ const Home = () => {
               <Button
                 key={id}
                 style={{
-                  border: "1px solid black",
-                  background: id === tab ? "black" : "",
-                  color: id === tab ? "white" : "black",
+                  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+                  border: "none",
+                  background: id === tab ? "indigo" : "",
+                  color: id === tab ? "white" : "indigo",
                   display: "flex",
                   gap: "5px",
                   fontWeight: "medium",
@@ -111,10 +112,10 @@ const Home = () => {
               <Accordion
                 key={_id}
                 style={{
-                  border: "2px solid #C4C4C4",
-                  background: "#F5F5F5",
-                  borderRadius: "8px",
-                  // padding: "2px",
+                  border: "none",
+                  background: "white",
+                  borderRadius: "10px",
+                  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)"
                 }}
                 expanded={expanded == _id.toString()}
                 onChange={handleChange(_id.toString())}
@@ -130,7 +131,7 @@ const Home = () => {
                   aria-controls={`${_id}a-content`}
                   id={`${_id}a-header`}
                 >
-                  <p className="text-[14px] sm:text-[16px] font-bold text-gray-500">
+                  <p className="text-[14px] sm:text-[16px] font-medium text-gray-500">
                     {category}
                   </p>
                 </AccordionSummary>
@@ -145,10 +146,10 @@ const Home = () => {
                             return (
                               <div
                                 key={roleFor._id}
-                                className="border border-[#62626220] hover:border-[#62626240] rounded-md bg-[#fff] flex items-center justify-between gap-5 group"
+                                className="shadow rounded-md bg-[#fff] flex items-center justify-between gap-5 group"
                               >
                                 <p className="text-base pl-4">{role}</p>
-                                <div className="flex items-center justify-end gap-2 text-[#626262] border border-[#62626220] group-hover:border-[#62626240] group-hover:bg-[#182F59] group-hover:text-[#fff] rounded-md transition ease-in-out duration-300 px-2 py-2 cursor-pointer">
+                                <div className="flex items-center justify-end gap-2 text-[#626262] border border-[#62626220] group-hover:border-[#62626240] group-hover:bg-[#4c2b99] group-hover:text-[#fff] rounded-md transition ease-in-out duration-300 px-2 py-2 cursor-pointer">
                                   <button className="uppercase text-xs sm:text-sm">
                                     APPLY
                                   </button>
@@ -166,10 +167,10 @@ const Home = () => {
                             return (
                               <div
                                 key={roleFor._id}
-                                className="border border-[#62626220] hover:border-[#62626240] rounded-md bg-[#fff] flex items-center justify-between gap-5 group"
+                                className="shadow rounded-md bg-[#fff] flex items-center justify-between gap-5 group"
                               >
                                 <p className="text-base pl-4">{role}</p>
-                                <div className="flex items-center justify-end gap-2 text-[#626262] border border-[#62626220] group-hover:border-[#62626240] group-hover:bg-[#182F59] group-hover:text-[#fff] rounded-md transition ease-in-out duration-300 px-2 py-2 cursor-pointer">
+                                <div className="flex items-center justify-end gap-2 text-[#626262] border border-[#62626220] group-hover:border-[#62626240] group-hover:bg-[#4c2b99] group-hover:text-[#fff] rounded-md transition ease-in-out duration-300 px-2 py-2 cursor-pointer">
                                   <button className="uppercase text-xs sm:text-sm">
                                     APPLY
                                   </button>
@@ -186,10 +187,10 @@ const Home = () => {
                           return (
                             <div
                               key={roleFor._id}
-                              className="border border-[#62626220] hover:border-[#62626240] rounded-md bg-[#fff] flex items-center justify-between gap-5 group"
+                              className="shadow rounded-md bg-[#fff] flex items-center justify-between gap-5 group"
                             >
                               <p className="text-base pl-4">{role}</p>
-                              <div className="flex items-center justify-end gap-2 text-[#626262] border border-[#62626220] group-hover:border-[#62626240] group-hover:bg-[#182F59] group-hover:text-[#fff] rounded-md transition ease-in-out duration-300 px-2 py-2 cursor-pointer">
+                              <div className="flex items-center justify-end gap-2 text-[#626262] border border-[#62626220] group-hover:border-[#62626240] group-hover:bg-[#4c2b99] group-hover:text-[#fff] rounded-md transition ease-in-out duration-300 px-2 py-2 cursor-pointer">
                                 <button className="uppercase text-xs sm:text-sm">
                                   APPLY
                                 </button>
